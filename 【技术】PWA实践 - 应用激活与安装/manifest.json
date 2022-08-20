@@ -1,0 +1,15 @@
+{
+    "name": "这里输入PWA项目的名称",
+    "short_name": "这里输入PWA项目的简称",
+    "start_url": "指定项目启动的url地址",
+    "display": "standalone",
+    "background_color": "red",
+    "theme_color": "green",
+    "icons": [
+      {
+        "src": "./demo.png",
+        "sizes": "180x180",
+        "type": "image/png"
+      }
+    ]
+  }
