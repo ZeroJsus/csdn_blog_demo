@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function loadError (oError) {
+      throw new URIError("脚本：" + oError.target.src + " 不可访问。");
+    }
+
+    function importScript (sSrc, fOnload, isString = false) {
+      var oScript = document.createElement("script");
+      oScript.type = "text\/javascript";
+      oScript.onerror = loadError;
+      if (fOnload) { oScript.onload = fOnload; }
+      document.currentScript.parentNode.insertBefore(oScript, document.currentScript);
+      if (isString) {
+        oScript.innerHTML = sSrc;
+      } else {
+        oScript.src = sSrc;
+      }
+    }
+
+    function onScriptLoaded() {
+      alert('script content loaded')
+    }
+    
+    importScript('https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.min.js',  onScriptLoaded)
+    importScript("console.log('文本脚步内容加载完毕')", () => {
+      alert('string content loaded')
+    }, true)
+  </script>
+</body>
+</html>
